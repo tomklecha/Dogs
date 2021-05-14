@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent"
+    >
+
+    <data>
+        <variable
+            name="url"
+            type="java.lang.String" />
+        <variable
+            name="callback"
+            type="com.tkdev.dogs.views.PictureFragment.Callback" />
+    </data>
+
+    <FrameLayout
+        style="@style/Animation.Design.BottomSheetDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:background="@android:color/transparent"
+            android:id="@+id/dogPicture"
+            loadImageUrl="@{url}"
+            override="@{false}"
+            android:onClick="@{() -> callback.dismissPicture()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/empty_dogs_list_placeholder" />
+    </FrameLayout>
+</layout>

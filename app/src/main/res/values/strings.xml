@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Dogs</string>
+    <string name="exception_fetch_fail">Something went wrong while fetching list</string>
+    <string name="exception_no_internet">Problem with internet connection</string>
+    <string name="mapper_list_empty">Fetched list was empty</string>
+    <string name="dogs_list_successful">Dogs list have been downloaded successfully</string>
+    <string name="pictures_list_successful">Dogs pictures have been downloaded successfully</string>
+    <string name="empty_list_placeholder">empty list placeholder</string>
+    <string name="dogs_list_stored_empty">List stored in saved preferences is empty</string>
+    <string name="dogs_list_successful_local">Dogs list have been loaded successfully from local storage</string>
+    <string name="activity_exception">Activity cannot be null</string>
+</resources>

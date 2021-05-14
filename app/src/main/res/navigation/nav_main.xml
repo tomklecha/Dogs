@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/listFragment">
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.tkdev.dogs.views.DogsListFragment">
+        <action
+            android:id="@+id/action_listFragment_to_breedFragment"
+            app:destination="@id/breedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/breedFragment"
+        android:name="com.tkdev.dogs.views.BreedFragment">
+        <action
+            android:id="@+id/action_breedFragment_to_pictureFragment"
+            app:destination="@id/pictureFragment">
+        </action>
+    </fragment>
+    <dialog
+        android:id="@+id/pictureFragment"
+        android:name="com.tkdev.dogs.views.PictureFragment">
+        <argument
+            android:name="imageUrl"
+            app:argType="string"
+            android:defaultValue="" />
+    </dialog>
+
+</navigation>
