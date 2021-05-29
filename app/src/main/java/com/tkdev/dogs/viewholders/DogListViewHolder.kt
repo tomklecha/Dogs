@@ -1,7 +1,7 @@
 package com.tkdev.dogs.viewholders
 
 import androidx.recyclerview.widget.RecyclerView
-import com.tkdev.dogs.data.model.DogModel
+import com.tkdev.dogs.model.DogModel
 import com.tkdev.dogs.databinding.ItemDogListBinding
 import com.tkdev.dogs.views.DogsListFragment
 

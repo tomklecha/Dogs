@@ -3,7 +3,7 @@ package com.tkdev.dogs.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.tkdev.dogs.data.model.DogModel
+import com.tkdev.dogs.model.DogModel
 import com.tkdev.dogs.databinding.ItemDogListBinding
 import com.tkdev.dogs.viewholders.DogListViewHolder
 import com.tkdev.dogs.views.DogsListFragment

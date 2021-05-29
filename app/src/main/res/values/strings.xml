@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Dogs</string>
     <string name="exception_fetch_fail">Something went wrong while fetching list</string>
-    <string name="exception_no_internet">Problem with internet connection</string>
+    <string name="exception_no_internet">Problem with internet connection, loaded stored data</string>
+    <string name="exception_no_internet_pictures_download">Problem with internet connection</string>
     <string name="mapper_list_empty">Fetched list was empty</string>
     <string name="dogs_list_successful">Dogs list have been downloaded successfully</string>
     <string name="pictures_list_successful">Dogs pictures have been downloaded successfully</string>

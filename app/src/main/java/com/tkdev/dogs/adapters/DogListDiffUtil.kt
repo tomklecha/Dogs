@@ -1,7 +1,7 @@
 package com.tkdev.dogs.adapters
 
 import androidx.recyclerview.widget.DiffUtil
-import com.tkdev.dogs.data.model.DogModel
+import com.tkdev.dogs.model.DogModel
 
 class DogListDiffUtil : DiffUtil.ItemCallback<DogModel>(){
     override fun areItemsTheSame(oldItem: DogModel, newItem: DogModel): Boolean {

@@ -7,7 +7,7 @@
 
         <variable
             name="dogModel"
-            type="com.tkdev.dogs.data.model.DogModel" />
+            type="com.tkdev.dogs.model.DogModel" />
 
         <variable
             name="clickListener"

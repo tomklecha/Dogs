@@ -1,4 +1,4 @@
-package com.tkdev.dogs.data.model
+package com.tkdev.dogs.model
 
 data class BreedDomain(
     val message: List<String>,

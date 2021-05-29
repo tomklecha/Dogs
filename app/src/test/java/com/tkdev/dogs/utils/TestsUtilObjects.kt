@@ -1,7 +1,7 @@
 package com.tkdev.dogs.utils
 
-import com.tkdev.dogs.data.model.BreedDomain
-import com.tkdev.dogs.data.model.DogModel
+import com.tkdev.dogs.model.BreedDomain
+import com.tkdev.dogs.model.DogModel
 import kotlin.random.Random
 
 val testID = Random.nextInt()
