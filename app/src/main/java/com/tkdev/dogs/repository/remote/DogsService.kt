@@ -1,7 +1,7 @@
-package com.tkdev.dogs.data
+package com.tkdev.dogs.repository.remote
 
-import com.tkdev.dogs.data.model.BreedDomain
-import com.tkdev.dogs.data.model.DogDomain
+import com.tkdev.dogs.model.BreedDomain
+import com.tkdev.dogs.model.DogDomain
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

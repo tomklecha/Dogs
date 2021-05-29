@@ -1,9 +1,9 @@
 package com.tkdev.dogs
 
 import com.tkdev.dogs.common.StringWrapper
-import com.tkdev.dogs.data.DogsApiMapperDefault
-import com.tkdev.dogs.data.model.ApiResponse
-import com.tkdev.dogs.data.model.DogModel
+import com.tkdev.dogs.repository.remote.DogsRemoteRepoMapperDefault
+import com.tkdev.dogs.model.ApiResponse
+import com.tkdev.dogs.model.DogModel
 import com.tkdev.dogs.utils.*
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -19,7 +19,7 @@ class DogsApiMapperTests {
     private lateinit var stringWrapper: StringWrapper
 
     @InjectMockKs
-    private lateinit var apiMapper: DogsApiMapperDefault
+    private lateinit var apiMapper: DogsRemoteRepoMapperDefault
 
     @Before
     fun setup() {

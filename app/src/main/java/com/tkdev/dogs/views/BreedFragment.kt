@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.tkdev.dogs.R
 import com.tkdev.dogs.adapters.BreedAdapter
 import com.tkdev.dogs.common.FactoryInjector
-import com.tkdev.dogs.data.model.DogModel
+import com.tkdev.dogs.model.DogModel
 import com.tkdev.dogs.databinding.FragmentBreedBinding
 import com.tkdev.dogs.viewmodels.DogsViewModel
 
@@ -45,7 +45,7 @@ class BreedFragment : Fragment() {
             .inflate(inflater, container, false).apply {
                 viewModel = dogsViewModel
                 lifecycleOwner = viewLifecycleOwner
-                callback = object : BreedFragment.Callback {
+                callback = object : Callback {
                     override fun showPicture(imageUrl: String) {
                         val bundle = Bundle()
                         bundle.putString(IMAGE_URL, imageUrl)

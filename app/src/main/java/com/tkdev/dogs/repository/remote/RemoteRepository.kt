@@ -1,7 +1,7 @@
-package com.tkdev.dogs.data
+package com.tkdev.dogs.repository.remote
 
-import com.tkdev.dogs.data.model.BreedDomain
-import com.tkdev.dogs.data.model.DogDomain
+import com.tkdev.dogs.model.BreedDomain
+import com.tkdev.dogs.model.DogDomain
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -9,14 +9,14 @@ import retrofit2.await
 
 import retrofit2.converter.gson.GsonConverterFactory
 
-interface DogsApi {
+interface RemoteRepository {
     suspend fun fetchDogsList(): DogDomain
     suspend fun fetchBreedDogPictures(breed: String): BreedDomain
 }
 
 private const val BASE_URL = "https://dog.ceo/api/"
 
-class DogsApiDefault : DogsApi {
+class RemoteRepositoryDefault : RemoteRepository {
 
     private var service: DogsService
 

@@ -1,4 +1,4 @@
-package com.tkdev.dogs.data.model
+package com.tkdev.dogs.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

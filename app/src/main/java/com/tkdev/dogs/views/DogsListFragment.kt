@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.tkdev.dogs.R
 import com.tkdev.dogs.adapters.DogsListAdapter
 import com.tkdev.dogs.common.FactoryInjector
-import com.tkdev.dogs.data.model.DogModel
+import com.tkdev.dogs.model.DogModel
 import com.tkdev.dogs.databinding.FragmentListDogsBinding
 import com.tkdev.dogs.viewmodels.DogsViewModel
 

@@ -1,4 +1,4 @@
-package com.tkdev.dogs.data.model
+package com.tkdev.dogs.model
 
 sealed class ApiResponse<T>(
     val data: T? = null,

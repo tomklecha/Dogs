@@ -1,14 +1,14 @@
-package com.tkdev.dogs.data
+package com.tkdev.dogs.repository.remote
 
 import com.tkdev.dogs.R
 import com.tkdev.dogs.common.StringWrapper
-import com.tkdev.dogs.data.model.ApiResponse
-import com.tkdev.dogs.data.model.BreedDomain
-import com.tkdev.dogs.data.model.DogModel
+import com.tkdev.dogs.model.ApiResponse
+import com.tkdev.dogs.model.BreedDomain
+import com.tkdev.dogs.model.DogModel
 import java.util.*
 import kotlin.random.Random
 
-interface DogsApiMapper {
+interface DogsRemoteRepoMapper {
     fun mapDogsList(dogs: Map<String, List<String>>): ApiResponse<List<DogModel>>
     fun mapPicturesWithBreed(
         breedDomain: BreedDomain,
@@ -16,7 +16,7 @@ interface DogsApiMapper {
     ): ApiResponse<List<String>>
 }
 
-class DogsApiMapperDefault(private val stringWrapper: StringWrapper) : DogsApiMapper {
+class DogsRemoteRepoMapperDefault(private val stringWrapper: StringWrapper) : DogsRemoteRepoMapper {
     override fun mapDogsList(dogs: Map<String, List<String>>): ApiResponse<List<DogModel>> {
         val list = mutableListOf<DogModel>()
         var id = 0

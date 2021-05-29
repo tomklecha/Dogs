@@ -3,11 +3,11 @@ package com.tkdev.dogs.common
 import android.content.Context
 import android.content.SharedPreferences
 import android.net.ConnectivityManager
-import com.tkdev.dogs.data.DogsApi
-import com.tkdev.dogs.data.DogsApiDefault
-import com.tkdev.dogs.data.DogsApiMapper
-import com.tkdev.dogs.data.DogsApiMapperDefault
-import com.tkdev.dogs.repository.DogsRepository
+import com.tkdev.dogs.repository.remote.DogsRemoteRepoMapper
+import com.tkdev.dogs.repository.remote.DogsRemoteRepoMapperDefault
+import com.tkdev.dogs.repository.*
+import com.tkdev.dogs.repository.remote.RemoteRepository
+import com.tkdev.dogs.repository.remote.RemoteRepositoryDefault
 import com.tkdev.dogs.viewmodels.DogsViewModelFactory
 
 private const val SHARED_PREF_NAME = "shared_preferences"
@@ -23,13 +23,14 @@ object FactoryInjector {
     }
 
     private fun getDogsRepository(context: Context) : DogsRepository {
-        val api = getDogsApi()
+        val remoteRepository = getRemoteRepository()
+        val sharedPreferences = getSharedPreferences(context)
         val stringWrapper = getStringWrapper(context)
+        val localRepository = getLocalRepository(sharedPreferences, stringWrapper)
         val mapper = getDogsApiMapper(stringWrapper)
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val connectionManager = getConnectionManager(connectivityManager)
-        val sharedPreferences = getSharedPreferences(context)
-        return DogsRepository(api, mapper, connectionManager, sharedPreferences, stringWrapper)
+        return DogsRepository(remoteRepository, localRepository, mapper, connectionManager,  stringWrapper)
     }
 
     private fun getCommonCoroutineDispatcher(): CommonCoroutineDispatcher = CommonCoroutineDispatcherDefault()
@@ -41,7 +42,12 @@ object FactoryInjector {
     private fun getSharedPreferences(context: Context): SharedPreferences =
         context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
 
-    private fun getDogsApiMapper(stringWrapper: StringWrapper): DogsApiMapper = DogsApiMapperDefault(stringWrapper)
+    private fun getDogsApiMapper(stringWrapper: StringWrapper): DogsRemoteRepoMapper = DogsRemoteRepoMapperDefault(stringWrapper)
 
-    private fun getDogsApi() : DogsApi = DogsApiDefault()
+    private fun getRemoteRepository() : RemoteRepository = RemoteRepositoryDefault()
+
+    private fun getLocalRepository(
+        sharedPreferences: SharedPreferences,
+        stringWrapper: StringWrapper
+    ): LocalRepository = LocalRepositoryDefault(sharedPreferences, stringWrapper)
 }
