@@ -10,18 +10,17 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.tkdev.dogs.R
 import com.tkdev.dogs.adapters.BreedAdapter
-import com.tkdev.dogs.common.FactoryInjector
 import com.tkdev.dogs.model.DogModel
 import com.tkdev.dogs.databinding.FragmentBreedBinding
 import com.tkdev.dogs.viewmodels.DogsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 const val SELECTED_DOG_MODEL = "dog_model"
 
+@AndroidEntryPoint
 class BreedFragment : Fragment() {
 
-    private val dogsViewModel: DogsViewModel by activityViewModels {
-        FactoryInjector.provideDogsViewModelFactory(requireActivity().applicationContext)
-    }
+    private val dogsViewModel: DogsViewModel by activityViewModels()
 
     private lateinit var binding: FragmentBreedBinding
     private lateinit var breedAdapter: BreedAdapter

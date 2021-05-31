@@ -1,11 +1,11 @@
 package com.tkdev.dogs.repository.remote
 
-import com.tkdev.dogs.R
-import com.tkdev.dogs.common.StringWrapper
 import com.tkdev.dogs.model.ApiResponse
 import com.tkdev.dogs.model.BreedDomain
 import com.tkdev.dogs.model.DogModel
 import java.util.*
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.random.Random
 
 interface DogsRemoteRepoMapper {
@@ -16,7 +16,11 @@ interface DogsRemoteRepoMapper {
     ): ApiResponse<List<String>>
 }
 
-class DogsRemoteRepoMapperDefault(private val stringWrapper: StringWrapper) : DogsRemoteRepoMapper {
+@Singleton
+class DogsRemoteRepoMapperDefault @Inject constructor(
+//    private val stringWrapper: StringWrapper
+    )
+    : DogsRemoteRepoMapper {
     override fun mapDogsList(dogs: Map<String, List<String>>): ApiResponse<List<DogModel>> {
         val list = mutableListOf<DogModel>()
         var id = 0
@@ -50,7 +54,7 @@ class DogsRemoteRepoMapperDefault(private val stringWrapper: StringWrapper) : Do
             }
         }
         return when (list.isEmpty()) {
-            true -> ApiResponse.Fail(stringWrapper.getString(R.string.mapper_list_empty), list)
+            true -> ApiResponse.Fail("stringWrapper.getString(R.string.mapper_list_empty", list)
             false -> ApiResponse.Success(list.toList())
         }
     }
@@ -73,7 +77,7 @@ class DogsRemoteRepoMapperDefault(private val stringWrapper: StringWrapper) : Do
             list = reducedList
         }
         return when (list.isEmpty()) {
-            true -> ApiResponse.Fail(stringWrapper.getString(R.string.mapper_list_empty), list)
+            true -> ApiResponse.Fail("stringWrapper.getString(R.string.mapper_list_empty", list)
             false -> ApiResponse.Success(list)
         }
     }

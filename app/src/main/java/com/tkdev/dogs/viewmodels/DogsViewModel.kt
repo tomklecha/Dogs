@@ -4,15 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tkdev.dogs.R
 import com.tkdev.dogs.common.CommonCoroutineDispatcher
 import com.tkdev.dogs.common.SingleEvent
 import com.tkdev.dogs.model.ApiResponse
 import com.tkdev.dogs.model.DogModel
 import com.tkdev.dogs.repository.DogsRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class DogsViewModel(
+@HiltViewModel
+class DogsViewModel @Inject constructor(
     private val repository: DogsRepository,
     private val coroutineDispatcher: CommonCoroutineDispatcher
 ) : ViewModel() {
@@ -49,7 +51,7 @@ class DogsViewModel(
                     _emptyListVisibility.postValue(false)
                     _dogsList.postValue(response.data)
                     _isDogListRefreshing.postValue(false)
-                    _snackBarMessage.postValue(SingleEvent(repository.getStringMessage(R.string.dogs_list_successful)))
+                    _snackBarMessage.postValue(SingleEvent("repository.getStringMessage(R.string.dogs_list_successful)"))
                 }
                 is ApiResponse.Fail -> {
                     _dogsList.postValue(response.data)
@@ -58,7 +60,7 @@ class DogsViewModel(
                     _isDogListRefreshing.postValue(false)
                     _snackBarMessage.postValue(
                         SingleEvent(response.message
-                            ?: repository.getStringMessage(R.string.exception_fetch_fail)))
+                            ?: "repository.getStringMessage(R.string.exception_fetch_fail)"))
                 }
             }
         }
@@ -70,14 +72,14 @@ class DogsViewModel(
                 val result = repository.getBreedDogPictures(dogModel)
                 when (result) {
                     is ApiResponse.Success -> {
-                        _snackBarMessage.postValue(SingleEvent(repository.getStringMessage(R.string.pictures_list_successful)))
+                        _snackBarMessage.postValue(SingleEvent("repository.getStringMessage(R.string.pictures_list_successful)"))
                         _isDogListRefreshing.postValue(false)
                     }
                     is ApiResponse.Fail -> {
                         _snackBarMessage.postValue(
                             SingleEvent(
                                 result.message
-                                    ?: repository.getStringMessage(R.string.exception_fetch_fail)
+                                    ?: "repository.getStringMessage(R.string.exception_fetch_fail)"
                             )
                         )
                         _isDogListRefreshing.postValue(false)
@@ -87,7 +89,7 @@ class DogsViewModel(
             } else {
                 _snackBarMessage.postValue(
                     SingleEvent(
-                        repository.getStringMessage(R.string.exception_fetch_fail)
+                       " repository.getStringMessage(R.string.exception_fetch_fail)"
                     )
                 )
                 _isDogListRefreshing.postValue(false)
