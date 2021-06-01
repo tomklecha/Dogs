@@ -6,6 +6,8 @@ import com.tkdev.dogs.model.ApiResponse
 import com.tkdev.dogs.model.BreedDomain
 import com.tkdev.dogs.model.DogModel
 import java.util.*
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.random.Random
 
 interface DogsRemoteRepoMapper {
@@ -16,7 +18,11 @@ interface DogsRemoteRepoMapper {
     ): ApiResponse<List<String>>
 }
 
-class DogsRemoteRepoMapperDefault(private val stringWrapper: StringWrapper) : DogsRemoteRepoMapper {
+@Singleton
+class DogsRemoteRepoMapperDefault @Inject constructor(
+    private val stringWrapper: StringWrapper
+    )
+    : DogsRemoteRepoMapper {
     override fun mapDogsList(dogs: Map<String, List<String>>): ApiResponse<List<DogModel>> {
         val list = mutableListOf<DogModel>()
         var id = 0

@@ -7,6 +7,7 @@ import com.tkdev.dogs.model.BreedDomain
 import com.tkdev.dogs.model.DogDomain
 import com.tkdev.dogs.model.DogModel
 import com.tkdev.dogs.repository.*
+import com.tkdev.dogs.repository.local.LocalRepository
 import com.tkdev.dogs.repository.remote.DogsRemoteRepoMapper
 import com.tkdev.dogs.repository.remote.RemoteRepository
 import com.tkdev.dogs.utils.*
@@ -36,7 +37,7 @@ class DogsRepositoryTests {
     private lateinit var stringWrapper: StringWrapper
 
     @InjectMockKs
-    private lateinit var dogsRepository: DogsRepository
+    private lateinit var dogsRepository: DogsRepositoryDefault
 
     @Before
     fun setup() {

@@ -11,16 +11,15 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tkdev.dogs.R
 import com.tkdev.dogs.adapters.DogsListAdapter
-import com.tkdev.dogs.common.FactoryInjector
 import com.tkdev.dogs.model.DogModel
 import com.tkdev.dogs.databinding.FragmentListDogsBinding
 import com.tkdev.dogs.viewmodels.DogsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DogsListFragment : Fragment() {
 
-    private val dogsViewModel: DogsViewModel by activityViewModels {
-        FactoryInjector.provideDogsViewModelFactory(requireActivity().applicationContext)
-    }
+    private val dogsViewModel: DogsViewModel by activityViewModels()
 
     private lateinit var dogsListAdapter: DogsListAdapter
     private lateinit var binding: FragmentListDogsBinding

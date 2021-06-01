@@ -8,31 +8,18 @@ import retrofit2.Retrofit
 import retrofit2.await
 
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
+import javax.inject.Singleton
 
 interface RemoteRepository {
     suspend fun fetchDogsList(): DogDomain
     suspend fun fetchBreedDogPictures(breed: String): BreedDomain
 }
 
-private const val BASE_URL = "https://dog.ceo/api/"
-
-class RemoteRepositoryDefault : RemoteRepository {
-
+@Singleton
+class RemoteRepositoryDefault @Inject constructor(
     private var service: DogsService
-
-    init {
-        val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
-            .build()
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient)
-            .build()
-        service = retrofit.create(DogsService::class.java)
-    }
+): RemoteRepository {
 
     override suspend fun fetchDogsList(): DogDomain = service.fetchAllDogs().await()
 

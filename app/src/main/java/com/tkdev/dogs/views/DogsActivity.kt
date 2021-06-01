@@ -5,15 +5,15 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.snackbar.Snackbar
 import com.tkdev.dogs.R
-import com.tkdev.dogs.common.FactoryInjector
 import com.tkdev.dogs.viewmodels.DogsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DogsActivity : AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
@@ -21,9 +21,7 @@ class DogsActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
-    private val dogsViewModel: DogsViewModel by viewModels {
-        FactoryInjector.provideDogsViewModelFactory(applicationContext)
-    }
+    private val dogsViewModel: DogsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
