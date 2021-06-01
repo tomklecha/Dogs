@@ -3,6 +3,8 @@ package com.tkdev.dogs.repository.local
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.tkdev.dogs.R
+import com.tkdev.dogs.common.StringWrapper
 import com.tkdev.dogs.model.ApiResponse
 import com.tkdev.dogs.model.DogModel
 import com.tkdev.dogs.repository.DOGS_LIST
@@ -17,7 +19,7 @@ interface LocalRepository {
 @Singleton
 class LocalRepositoryDefault @Inject constructor(
     private val sharedPreferences: SharedPreferences,
-//    private val stringWrapper: StringWrapper
+    private val stringWrapper: StringWrapper
 ) : LocalRepository {
 
     override fun getStoredDogsList(): ApiResponse<List<DogModel>> {
@@ -28,7 +30,7 @@ class LocalRepositoryDefault @Inject constructor(
                 val type = object : TypeToken<List<DogModel>>() {}.type
                 ApiResponse.Success(gson.fromJson(json, type))
             }
-            false -> ApiResponse.Fail("stringWrapper.getString(R.string.dogs_list_stored_empty)")
+            false -> ApiResponse.Fail(stringWrapper.getString(R.string.dogs_list_stored_empty))
         }
     }
 

@@ -16,7 +16,6 @@ interface RemoteRepository {
     suspend fun fetchBreedDogPictures(breed: String): BreedDomain
 }
 
-
 @Singleton
 class RemoteRepositoryDefault @Inject constructor(
     private var service: DogsService
